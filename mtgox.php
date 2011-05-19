@@ -2,9 +2,10 @@
 
 include "config.inc.php";
 include "curllib3.inc.php";
+include "lib.inc.php";
 
 // TODO: pobieranie z pliku .ini
-
+date_default_timezone_set(getLocalTimezone());
 $numoffers=10;
 
 function ListOrder($c,$user,$password)
@@ -20,7 +21,7 @@ function ListOrder($c,$user,$password)
 
 $c=new CURL;
 
-echo "ToyTrader v. 0.0.2 - command line mtgox trading tool\nDONATE for FASTER development: 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX\nFor help type: H and press enter\n";
+echo "ToyTrader v. 0.0.3 - command line mtgox trading tool\nDONATE for FASTER development: 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX\nFor help type: H and press enter\n";
 
 $quitflag=FALSE;
 $refreshflag=TRUE;
@@ -56,7 +57,11 @@ do
 	}
 	$refreshflag=TRUE;
 
-	$line = readline("Command [^M]: ");
+	//$line = readline("Command [^M]: ");
+	echo("Command [^M]: ");
+	$hndl=fopen("php://stdin","r");
+	$line=trim(fgets($hndl));
+	fclose($hndl);
 	if (trim(strtoupper($line)=='Q')) {$quitflag=TRUE;echo ".\n.\n. DONATE for FASTER development: 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX\n.\n.\n";}
 	if (trim(strtoupper($line)=='L')) {ListOrder($c,$user,$password);$refreshflag=FALSE;}
 	$cl=explode(' ',trim($line));

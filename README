@@ -1,0 +1,4 @@
+ToyTrader is bitcoin mtgox commandline daytrading tool
+
+Dependencies:
+PHP >= 5.3

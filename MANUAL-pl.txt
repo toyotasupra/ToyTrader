@@ -1,0 +1,67 @@
+ToyTrader MANUAL - POLISH
+
+
+1. INSTALACJA I KONFIGURACJA
+=============================================================================
+
+Do używania tego narzędzia potrzebujesz php przynajmniej w wersji 5.3
+
+Jeśli nie masz zainstalowego php musisz go sobie zainstalować:
+
+sudo yum install php (rhel, centos, fedora)
+
+lub opcjonalnie
+
+sudo apt-get install php (debian, ubuntu)
+
+Nastepnie należy skonfigurować program - wyedytuj plik config.inc.php - i podaj tam po swój login i hasło do mtgox'a.
+
+
+2. URUCHOMIENIE
+=============================================================================
+
+Uruchamia się to z shella poprzez polecenie:
+
+php -q mtgox.php
+
+
+3. UŻYWANIE - SPRAWDŹ SIĘ Z RYNKIEM
+=============================================================================
+
+Polecenia podaje się w linni polecen programu, każde polecenie należy zakończyć znakiem końca linii (klawisz enter).
+
+* Odświeżenie arkusza zleceń i ceny ostatnio zawartej transakcji - naciskasz po prostu enter. Program pobiera i wyświetla za każdym odświeżeniem arkusza - arkusz zleceń, cenę ostatnio zawartej transakcji oraz twój stan konta w mtgox.
+
+* Kupowanie - aby kupić wydajesz polecenie "b ilosc cena" czyli np. "b 10 6.89" składasz zlecenie kupna btc po cenie 6.89. Możesz też nabyć BTC za całość posiadanej gotówki w USA wydając polecenie "b all 6.50" - zlecenie kupna za całość USD bitcoinów po cenie 6.50
+
+* Sprzedawanie - aby sprzedać wydajesz polecenie "s ilosc cena" czyli np. "s 3 7.289" oznacza złożenie zlecenia sprzedazy 3 bitcoinów po 7.289 - oczywiscie można równiez sprzedać wszystkie posiadane bitcoiny za pomoca polecenia "s all 7.99" - zlecenie sprzedaży wszystkich bitcoinów po 7.99
+
+* Lista aktywnych zleceń, poleceniem "l" wyswietlasz listę aktualnie złozonych zleceń, lista wyświetla się w formacie:
+
+oid		type		amount		price 		status		darkpool		czas
+
+gdzie: oid - jest numeren identyfikacyjnym transakcji, type - typem zawieranej transakcji (1 sell, 2 buy), amount - iloscia bitcoinów, price - ceną, status - status, darkpool - czy darkpoolowa, i czas to czas.
+
+* Usuwanie zlecenia - jeżeli chcesz usunać zlecenie poleceniem "c oid type" usuwasz zlecenie, np. "c 373474 1" oznacza usunięcie zlecenia sprzedaży o numerze indentyfikacyjnym (oid) 373474
+
+* Lista ostatnio zawartych transakcji na rynku - polecenie "T" - wyswietla 10 ostatnio zawartych transakcji na rynku, ilość wyswietlanych transakcji mozna zmienić w pierwszym parametrze polecenia, np. "T 20" wyświetla o20 ostatnio zawartych transakcji. UWAGA! z uwagi na to że lista jest długa, pobieranie listy transakcji potrafi trwać ~15 sekund, zależnie od obciążenia mtgox'a
+
+* Wypłata bitcoinów - "W ilosc adres_bitcoin" wypłaca bitcoiny na dany adres. "W 0.05 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX" wypłaca na podany adres 0.05 bitcoinów
+
+* polecenie "H" wyswietla krótki help
+
+
+4. DISCLAIMER
+=============================================================================
+
+Program jest w bardzo wczesnej wersji i moze działać niestabilnie ;) Czasami mtgox nie zwraca tego co chcemy z uwagi na obciażenie i wtedy pojawiają się błedy i trzeba po prostu odswiezyć ekran naciskając enter.
+
+Oczywiście uzywasz na własną odpowiedzilanosc. 
+
+
+5. DOTACJE
+=============================================================================
+
+Jeżeli chcesz abym rozwijał dalej program i robił to naprawdę szybko, a może i stworzył kolejne narzędzia dla bitcoina, poprosze o dotację. To naprawdę pomoże! Oto adres 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX
+
+

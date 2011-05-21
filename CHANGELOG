@@ -1,7 +1,8 @@
 CHANGELOG
 
-0.0.3 - errors fixed http://forum.bitcoin.org/index.php?topic=8968.msg129962#msg129962 
-default date problem fixed, and used fgets instead of readline()
+0.0.4 - added sorting of mtgox market depth feed, to be sure that everything is correct, according issue http://forum.bitcoin.org/index.php?topic=8968.msg132992#msg132992
+
+0.0.3 - some errors fixed http://forum.bitcoin.org/index.php?topic=8968.msg129962#msg129962 default date problem fixed, and used fgets instead of readline()
 
 0.0.2 - working prototype
 

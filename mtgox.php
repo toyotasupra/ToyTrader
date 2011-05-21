@@ -21,7 +21,7 @@ function ListOrder($c,$user,$password)
 
 $c=new CURL;
 
-echo "ToyTrader v. 0.0.3 - command line mtgox trading tool\nDONATE for FASTER development: 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX\nFor help type: H and press enter\n";
+echo "ToyTrader v. 0.0.4 - command line mtgox trading tool\nDONATE for FASTER development: 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX\nFor help type: H and press enter\n";
 
 $quitflag=FALSE;
 $refreshflag=TRUE;
@@ -48,11 +48,26 @@ do
 
 		$depth=json_decode($b);
 
+		// sort arrays from mtgox
+		$asksarr=array();
+		foreach ($depth->asks as $asks)
+		{
+			$asksarr[]=$asks;
+		}
+		usort($asksarr, "cmp");
+
+		$bidsarr=array();
+		foreach ($depth->bids as $bids)
+		{
+			$bidsarr[]=$bids;
+		}
+		usort($bidsarr, "cmpr");
+
 	
 		echo "BUY OFFERS\t\t\tSELL OFFERS\n";
 		for($cnt=1;$cnt<=$numoffers;$cnt++)
 		{
-			echo $depth->bids[$cnt][0]."\t".$depth->bids[$cnt][1]."\t\t\t".$depth->asks[$cnt][0]."\t".$depth->asks[$cnt][1]."\n";
+			echo $bidsarr[$cnt][0]."\t".$bidsarr[$cnt][1]."\t\t\t".$asksarr[$cnt][0]."\t".$asksarr[$cnt][1]."\n";
 		}
 	}
 	$refreshflag=TRUE;

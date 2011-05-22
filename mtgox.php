@@ -21,7 +21,7 @@ function ListOrder($c,$user,$password)
 
 $c=new CURL;
 
-echo "ToyTrader v. 0.0.4 - command line mtgox trading tool\nDONATE for FASTER development: 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX\nFor help type: H and press enter\n";
+echo "ToyTrader v. 0.0.5 - command line mtgox trading tool\nDONATE for FASTER development: 1N8b1uzWA7RsfVPmA2kdGSEmsv91zTRMAX\nFor help type: H and press enter\n";
 
 $quitflag=FALSE;
 $refreshflag=TRUE;
@@ -65,7 +65,7 @@ do
 
 	
 		echo "BUY OFFERS\t\t\tSELL OFFERS\n";
-		for($cnt=1;$cnt<=$numoffers;$cnt++)
+		for($cnt=0;$cnt<$numoffers;$cnt++)
 		{
 			echo $bidsarr[$cnt][0]."\t".$bidsarr[$cnt][1]."\t\t\t".$asksarr[$cnt][0]."\t".$asksarr[$cnt][1]."\n";
 		}
